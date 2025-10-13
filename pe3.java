@@ -131,7 +131,20 @@ public class pe3 {
                             System.out.println("Falta dates, introdoueixles.");
                             break;
                         }
-                        //fe
+                        // Normalitzem i capitalitzem el nom
+                        String[] parts = name.trim().toLowerCase().split("\\s+");
+                        StringBuilder normalizedName = new StringBuilder();
+                        
+                        for (String part : parts) {
+                            if (!part.isEmpty()) {
+                                normalizedName.append(Character.toUpperCase(part.charAt(0)))
+                                        .append(part.substring(1))
+                                        .append(" ");
+                            }
+                        }
+                        name = normalizedName.toString().trim();
+
+                        // fem els calculs de imc
                         double imc = weight / (height * height);
                         String category;
                         if (imc < 18.5)
