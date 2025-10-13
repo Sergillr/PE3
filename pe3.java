@@ -17,8 +17,7 @@ public class pe3 {
                     "Sortir (d)");
             // prova--
             try {
-                selection = e.next();
-                e.nextLine();
+                selection = e.nextLine();
                 switch (selection) {
                     // en cas de haver intruduit 1
                     case "a":
@@ -53,7 +52,7 @@ public class pe3 {
                         }
                         // Preguntem la alçada el formatem i el pasem a double
                         System.out.println("Alçada (m):");
-                        heightInput = e.next();
+                        heightInput = e.nextLine();
                         heightInput = heightInput.replace(',', '.');
                         height = Double.parseDouble(heightInput);
 
@@ -75,7 +74,7 @@ public class pe3 {
 
                         System.out.println("Que vols modificar?\r\n Nom:" + name + " (a)\r\n Edat: " + age
                                 + "(b)\r\n Pes: " + weight + "(c)\r\n Altura: " + height + "(d)\r\n Sortir (e)");
-                        selection = e.next();
+                        selection = e.nextLine();
                         switch (selection) {
                             case "a":
                                 System.out.println("Introdueix les dades: Nom complet:");
@@ -96,6 +95,8 @@ public class pe3 {
                                     System.out.println("Numero en un rang impossible");
                                     break;
                                 }
+                                break;
+
                             case "c":
                                 // preguntem el pes (String) el formatem i el pasem a double
                                 System.out.println("Pes (kg):");
@@ -107,10 +108,12 @@ public class pe3 {
                                     System.out.println("Numero en un rang impossible");
                                     break;
                                 }
+                                break;
+
                             case "d":
                                 // Preguntem la alçada el formatem i el pasem a double
                                 System.out.println("Alçada (m):");
-                                heightInput = e.next();
+                                heightInput = e.nextLine();
                                 heightInput = heightInput.replace(',', '.');
                                 height = Double.parseDouble(heightInput);
 
@@ -119,6 +122,7 @@ public class pe3 {
                                     System.out.println("Numero en un rang impossible");
                                     break;
                                 }
+                                break;
                             case "e":
                                 System.out.println("Gracies");
                                 break;
@@ -131,20 +135,7 @@ public class pe3 {
                             System.out.println("Falta dates, introdoueixles.");
                             break;
                         }
-                        // Normalitzem i capitalitzem el nom
-                        String[] parts = name.trim().toLowerCase().split("\\s+");
-                        StringBuilder normalizedName = new StringBuilder();
-                        
-                        for (String part : parts) {
-                            if (!part.isEmpty()) {
-                                normalizedName.append(Character.toUpperCase(part.charAt(0)))
-                                        .append(part.substring(1))
-                                        .append(" ");
-                            }
-                        }
-                        name = normalizedName.toString().trim();
-
-                        // fem els calculs de imc
+                        // fe
                         double imc = weight / (height * height);
                         String category;
                         if (imc < 18.5)
@@ -169,11 +160,10 @@ public class pe3 {
                         int birthYear = currentYear - age;
 
                         // 🔹 Mostra la informació
-                        System.out.println("Hola, " + name + "!\r\n Edat: " + age + " anys| Pes: " + weight
-                                + " kg| Alçada: " + height + " m \r\n IMC: " + imc + " (" + category
-                                + ")\r\nFC màxima estimada: " + fcMax + " bpmZona \r\nFC objectiu: " + fc50 + "–" + fc85
-                                + " bpm\r\n Aigua recomanada: " + litres + " L/dia\r\n Any de naixement aproximat: "
-                                + birthYear);
+                        System.out.printf(
+                                "Hola, %s!\r\nEdat: %d anys | Pes: %.2f kg | Alçada: %.2f m \r\nIMC: %.2f (%s)\r\nFC màxima estimada: %d bpm\r\nFC objectiu: %d - %d bpm\r\nAigua recomanada: %.2f L/dia\r\nAny de naixement aproximat: %d\r\n\r\n",
+                                name, age, weight, height, imc, category, fcMax, fc50, fc85, litres, birthYear);
+
                         break;
 
                     // mostrem un missatge de despedida
