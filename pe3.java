@@ -183,6 +183,5 @@ public class pe3 {
             }
         }
         e.close();
-        // falta normalitzar el nom
     }
 }
